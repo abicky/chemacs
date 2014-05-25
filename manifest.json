@@ -1,0 +1,36 @@
+{
+  "name": "Chemacs",
+  "description": "Enable Emacs-like keybindings for editing text on Google Chrome",
+  "version": "0.0.1",
+  "manifest_version": 2,
+
+  "permissions": [
+    "tabs",
+    "clipboardRead",
+    "clipboardWrite"
+  ],
+
+  "background": {
+    "scripts": ["js/background.js"],
+    "persistent": false
+  },
+  "browser_action": {
+    "default_title": "Chemacs"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["lib/mousetrap.min.js", "js/buffer.js", "js/content.js"]
+    }
+  ],
+
+  "commands": {
+    "yank": {
+      "suggested_key": {
+        "default": "Ctrl+Y",
+        "mac": "MacCtrl+Y"
+      },
+      "description": "Paste a text from clipboard"
+    }
+  }
+}
